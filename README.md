@@ -1,20 +1,20 @@
-#Eyetooth Gaming Keypad
+# Eyetooth Gaming Keypad
 
-##DIY keypad inspired by the Ideazon Fang Gamepad
+## DIY keypad inspired by the Ideazon Fang Gamepad
 
-####Introduction
+#### Introduction
 This is a 37 key gaming keypad set up for the common fps/rpg key mapping, *although that can be changed; see blow*.  The software is written for an arduino pro micro board.  Any arduino with sufficient digital IO would probably work.
 
 This project was inspired by the death of my preferred gamepad. None of the currently available gamepads have a layout I like (not to mention the price). 
 I also wanted to add a rapid auto key press feature. Some (single-player) games require you to repeatedly press a button at some point. I am physically unable to press the button at the rate many of these games require causing me to get stuck at that point. So I added a mode that will rapidly repeat any keys that are held down.
 
-####Features
+#### Features
 - key redefinition
 - auto key repeat with adjustable repeat rate
 - n-key rollover
 - software debouncing
  
-####Hardware
+#### Hardware
 Parts:
 
 arduino pro micro
@@ -42,7 +42,7 @@ The CAD files are available on [Onshape](https://cad.onshape.com/documents/3ab93
 WireGuide.png indicates how the switches are connected in the default configuration. keypad.ods is a spreadsheet representation of the keyboard matrix.  
 When actually wiring, all keys on a column are directly connected. Each key on a row is connected to the bus for that row through a diode. The diodes are wired with the cathodes in common and the  anode connected to the switch. (the cathode is the end with the band) See, for example, [baldengineer](www.baldengineer.com/share-projects-four-platforms.html) for a complete explaination and schematics; CAUTION: note that my definition of row and column is reversed from that given there.
 
-####Software
+#### Software
 Program with the arduino IDE.  The default key definitions are in keydefs.h and can be edited as desired.  However, there are some restrictions on what will work when using the F9 chord commands. Then number keys 1-5 and 6-0 must each be contiguous left to right. Also F9 must on the last row of the keymap which asigns it to the last DIO pin defined in keypadRows[ROWS] (pin 9 by default).  On linux, a command line program, showkeys, is very handy for testing. 
 
 The code is written to favor clarity over efficiency since I expect it to spend most of its time looping while waiting for something to happen.  That said, it has only been tested on a 5v 16mHz pro micro. There should be no problem with the 3v 8mHz version, but I can give no guarantee.
@@ -52,7 +52,7 @@ There is an option to build a 39 key version which adds 'y' and 'u' keys as left
 If you like the physical design but don't want to use this software, you can use the popular [QMK](qmk.fm) firmware, but the customization will be up to you.
 
 
-####Instructions
+#### Instructions
 When powered up, the first thing it does is check the eeprom for a "valid data" flag. If found it loads the stored keymap and repeat rate.  It is possible that this could load random values. Therefore, on first use, you should reset all values (F9-C) to their defaults then save to eeprom (F9-F5).
 
 It works like any usb keyboard.
