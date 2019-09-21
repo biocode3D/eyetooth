@@ -7,6 +7,7 @@ This is a 37 key gaming keypad set up for the common fps/rpg key mapping, *altho
 
 This project was inspired by the death of my preferred gamepad. None of the currently available gamepads have a layout I like (not to mention the price). 
 I also wanted to add a rapid auto key press feature. Some (single-player) games require you to repeatedly press a button at some point. I am physically unable to press the button at the rate many of these games require causing me to get stuck at that point. So I added a mode that will rapidly repeat any keys that are held down.
+Additional information may be available on [hackaday](https://hackaday.io/project/167675-eyetooth-gaming-keypad) .
 
 #### Features
 - key redefinition
