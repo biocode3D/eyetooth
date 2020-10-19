@@ -36,23 +36,47 @@ int keypadRows[ROWS] =  {4, 5, 6, 7, 8, 9};
 
 // Default mapping of keyboard matrix to key press values
 
-char defaultkeys[ROWS][COLS] = {
-    {char(0xB1), '6', '7', '8', '9', '0', char(0xC6)},
-    {'j', '1', '2', '3', '4', '5', 'x'},
-    {'m', char(0xB3), 'q', 'w', 'e', 'r', 't'},
-    {'i', char(0x82), 'a', 's', 'd', 'f', 'g'},
-    {char(0x80), char(0x81),'z', ' ', 'c', 'v', 'b'},
-    {'y', 'u', 0, char(0xCA), 0, 0, char(0xB0)}
-};
-/*    
-       0    1      2    3       4   5   6
-   |  -----------------------------------------
- 0 |  Esc   6      7    8       9   0   F5
- 1 |  j     1      2    3       4   5   x
- 2 |  m     Tab    q    w       e   r   t
- 3 |  i     Alt    a    s       d   f   g
- 4 |  Ctrl  Shift  z    Space   c   v   b
- 5 |  y     u           F9             Return
+#ifdef ROGUE
+ 
+  char defaultkeys[ROWS][COLS] = {
+      {0, '6', '7', '8', '9', '0', char(0xC6)},
+      {0, '1', '2', '3', '4', '5', char(0xCE)},
+      {char(0xC1), char(0xB3), 'q', 'w', 'e', 'r', 't'},
+      {0, char(0x82), 'a', 's', 'd', 'f', 'g'},
+      {char(0x80), char(0x81), 'c', ' ', 0, 0, 0},
+      {0, 0, 0, char(0xCA), 'v', 'b', 'p'}
+  };
+  /*    
+         0    1      2    3       4   5   6
+     |  -----------------------------------------
+   0 |        6      7    8       9   0   F5
+   1 |        1      2    3       4   5   prtscr
+   2 |  capL  Tab    q    w       e   r   t
+   3 |        Alt    a    s       d   f   g
+   4 |  Ctrl  Shift  c    space   
+   5 |                    F9      v   b   p
+  */  
 
- "y" and "u" only used on 39 key version
- */  
+#else
+
+  char defaultkeys[ROWS][COLS] = {
+      {char(0xB1), '6', '7', '8', '9', '0', char(0xC6)},
+      {'j', '1', '2', '3', '4', '5', 'x'},
+      {'m', char(0xB3), 'q', 'w', 'e', 'r', 't'},
+      {'i', char(0x82), 'a', 's', 'd', 'f', 'g'},
+      {char(0x80), char(0x81),'z', ' ', 'c', 'v', 'b'},
+      {'y', 'u', 0, char(0xCA), 0, 0, char(0xB0)}
+  };
+  /*    
+         0    1      2    3       4   5   6
+     |  -----------------------------------------
+   0 |  Esc   6      7    8       9   0   F5
+   1 |  j     1      2    3       4   5   x
+   2 |  m     Tab    q    w       e   r   t
+   3 |  i     Alt    a    s       d   f   g
+   4 |  Ctrl  Shift  z    Space   c   v   b
+   5 |  y     u           F9             Return
+  
+   "y" and "u" only used on 39 key version
+   */
+#endif

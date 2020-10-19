@@ -81,6 +81,18 @@ void processkeys() {
     }  
   }  
 
+// Rogue map doesn't have return key or short row
+#ifdef ROGUE
+  // Special handling of row with F9 for merc layout
+  for (int j=0; j<COLS; j++) {
+    // skip F9
+    if(j != 3) {
+      curstate = keystate[j][LOADROW];
+      if(curstate) anykey = true;
+      doakey(j,LOADROW,curstate);
+    }
+  }
+#else
   // now handle special case of short row
 
   // first check for Return key event
@@ -93,11 +105,12 @@ void processkeys() {
     anykey |= curstate;
   }   
 
-#ifdef LEFT_KEYS
-  // if left-side keys added
-  for (int j=0; j<2; j++) {
-    doakey(j,LOADROW,curstate);
+  #ifdef LEFT_KEYS
+    // if left-side keys added
+    for (int j=0; j<2; j++) {
+      doakey(j,LOADROW,curstate);
   }
+  #endif
 #endif
   
   // handle special case of top button (F9 - Q.Load)
@@ -217,10 +230,15 @@ void special(int col, int row, bool state) {
       // save current settings
       record();  
       break;
-    case 0x44:    // col 4, row 4 pressed (C)
+#ifdef ROGUE      
+    case 0x24:    // col 4, row 4 pressed (C)
+#else  
+    case 0x44:    // col 2, row 4 pressed (C)
+#endif    
       // reset to default values
       incept();
-      break;      
+      break;
+#ifndef ROGUE      
     case 0x34:    // col 3, row 4 pressed (Space)
       // quit being a keyboard
       if(sendkeys) Keyboard.end();
@@ -233,6 +251,7 @@ void special(int col, int row, bool state) {
       sendkeys = true;
       light(LOW);
       break;
+#endif      
     case 0x04:    // col 0, row 4 pressed (LCtrl)
       // redefine a key
       unchord();  // wait for F9 up  

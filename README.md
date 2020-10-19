@@ -3,11 +3,13 @@
 ## DIY keypad inspired by the Ideazon Fang Gamepad
 
 #### Introduction
-This is a 37 key gaming keypad set up for the common fps/rpg key mapping, *although that can be changed; see blow*.  The software is written for an arduino pro micro board.  Any arduino with sufficient digital IO would probably work.
+This is a 37 key gaming keypad set up for the common fps/rpg key mapping, *although that can be changed; see below*.  The software is written for an arduino pro micro board.  Any arduino with sufficient digital IO would probably work.
 
 This project was inspired by the death of my preferred gamepad. None of the currently available gamepads have a layout I like (not to mention the price). 
 I also wanted to add a rapid auto key press feature. Some (single-player) games require you to repeatedly press a button at some point. I am physically unable to press the button at the rate many of these games require causing me to get stuck at that point. So I added a mode that will rapidly repeat any keys that are held down.
 Additional information may be available on [hackaday](https://hackaday.io/project/167675-eyetooth-gaming-keypad) .
+
+The software now also supports the [Rogue keypad](https://thingiverse) , a similar keypad inspired by the Ideazon Merc keyboard.
 
 #### Features
 - key redefinition
@@ -50,7 +52,9 @@ On linux, a command line program, showkeys, is very handy for testing.
 
 The code is written to favor clarity over efficiency since I expect it to spend most of its time looping while waiting for something to happen.  That said, it has only been tested on a 5v 16mHz pro micro. There should be no problem with the 3v 8mHz version, but I can give no guarantee.
 
-There is an option to build a 39 key version which adds 'y' and 'u' keys as left-side buttons. To enable this, uncomment "#define LEFT_KEYS" in eyetooth.h  The firmware could support 42 keys with trivial modification.
+There is an option to build a 39 key version which adds 'y' and 'u' keys as left-side buttons. To enable this, uncomment "#define LEFT_KEYS" in eyetooth.ino  The firmware could support 42 keys with trivial modification.
+
+There is an option for the Rogue keypad. To enable this, uncomment "#define ROGUE" in eyetooth.ino  The firmware could support 42 keys with trivial modification.
 
 If you like the physical design but don't want to use this software, you can use the popular [QMK](qmk.fm) firmware, but the customization will be up to you.
 
@@ -88,4 +92,6 @@ F9-F5 chord stores the current key map and repeat rate.  Until this is done unpl
  
  F9-Ctrl chord allows you to redefine any key.  When this chord is entered the LED will come on indicating that it is waiting for the key to be redefined.  Press and relase the key you want to redefine. The LED will blink in acknowlegement. Next use the number keys to enter the three digit decimal ascii value of the new definition. (use a leading zero assuming your code is below 100)  The LED will blink as each number is entered, then turn off.  At this point, the new value will be lost if you unplug the keypad or use F9-C. To keep the new value, use F9-F5.
  
+For the Rogue keypad: F9-X becomes F9-PrtSc. F9-Esc and F9-Space functions are omitted.
+
  

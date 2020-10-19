@@ -19,6 +19,12 @@
     along with eyetooth.  If not, see <http://www.gnu.org/licenses/>.      
 */
 
+// uncomment for 39 key version with keys on both sides
+// #define LEFT_KEYS  
+
+// uncomment for 33 key "Rogue" (Merc) version
+// #define ROGUE  
+
 #include "keydefs.h"
 #include "eyetooth.h"
   

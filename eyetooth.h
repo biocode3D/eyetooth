@@ -21,12 +21,11 @@
 #ifndef eyetooth_h
 #define eyetooth_h
 
+  
 #include "TimerOne.h"
 #include <Keyboard.h>
 #include <EEPROM.h>
 
-// uncomment for 39 key version with keys on both sides
-// #define LEFT_KEYS    
 
 #define LED   2         // DIO pin with LED connected
 #define FLASHPERSEC 4   // flash rate for LED
