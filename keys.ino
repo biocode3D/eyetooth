@@ -122,6 +122,9 @@ void processkeys() {
     if(formerstate[LOADCOL][LOADROW] && !curstate) { 
       if(!chorded && funkey) {        // this was regular keypress
         type(LOADCOL,LOADROW,true);   // send keydown
+        // don't like doing the following
+        // but prob harmless considering it's for reloading a save
+        delay(F9DELAY);            // pause necessary(!) for some games
         type(LOADCOL,LOADROW,false);  // send keyup    
       } 
       // release from chording mode

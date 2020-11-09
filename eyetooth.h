@@ -33,6 +33,8 @@
 #define POLLPERIOD  2000   // 2 msec
 #define DEBOUNCE    0x1F   // require 5 ups or downs in a row (10msec)
 
+#define F9DELAY  50     // msec delay between keydown/keyup for quick-load key                           
+
 #define AFaddr ROWS * COLS // eeprom addr to save autofire rate (just past keys array) 
 byte magicnum = 0xAA; // arbitrary byte written to eeprom (its absence means no valid data)
 
